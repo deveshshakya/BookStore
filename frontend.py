@@ -1,15 +1,4 @@
-"""
-A program which stores Book details like: Name, Author, Year, ISBN
-
-User can:-
-
-View All Records
-Add Entry
-Search Entry
-Update Entry
-Delete Entry
-Exit
-"""
+# Created on 28/5/2018
 
 from tkinter import *
 import backend
@@ -57,11 +46,12 @@ def delete_command():
 def update_command():
     backend.update(selected_tuple[0], title.get(), author.get(), year.get(), isbn.get())
 
-
+# window with icon and title
 window = Tk()
 window.title("BookStore")
 window.iconbitmap("Book.ico")
 
+# lable widget declaration
 l1 = Label(window, text='Title')
 l1.grid(row=0, column=0)
 
@@ -74,6 +64,7 @@ l3.grid(row=1, column=0)
 l4 = Label(window, text='ISBN')
 l4.grid(row=1, column=2)
 
+# entry widget declaration
 title = StringVar()
 e1 = Entry(window, textvariable=title)
 e1.grid(row=0, column=1)
@@ -90,20 +81,24 @@ isbn = StringVar()
 e4 = Entry(window, textvariable=isbn, width=25)
 e4.grid(row=1, column=3)
 
+# list box declaration
 list1 = Listbox(window, height=8, width=40)
 list1.grid(row=2, column=0, rowspan=5, columnspan=2)
 
+# scrollbar declaration both horizontal and vertical for listbox
 v_bar = Scrollbar(window, orient='vertical')
 v_bar.grid(row=2, column=2, rowspan=6)
 
 h_bar = Scrollbar(window, orient='horizontal')
 h_bar.grid(row=7, column=0, columnspan=2)
 
+# configuring scrollbar & event handler
 list1.configure(yscrollcommand=v_bar.set, xscrollcommand=h_bar)
 v_bar.configure(command=list1.yview)
 h_bar.configure(command=list1.xview)
 list1.bind('<<ListboxSelect>>', get_selected_row)
 
+# button declaration
 b1 = Button(window, text="View All", width=25, command=view_command)
 b1.grid(row=2, column=3)
 
@@ -122,4 +117,4 @@ b5.grid(row=6, column=3)
 b6 = Button(window, text="Close", width=25, command=window.destroy)
 b6.grid(row=7, column=3)
 
-window.mainloop()
+window.mainloop()  # run mainloop
