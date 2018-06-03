@@ -93,7 +93,7 @@ h_bar = Scrollbar(window, orient='horizontal')
 h_bar.grid(row=7, column=0, columnspan=2)
 
 # configuring scrollbar & event handler
-list1.configure(yscrollcommand=v_bar.set, xscrollcommand=h_bar)
+list1.configure(yscrollcommand=v_bar.set, xscrollcommand=h_bar.set)
 v_bar.configure(command=list1.yview)
 h_bar.configure(command=list1.xview)
 list1.bind('<<ListboxSelect>>', get_selected_row)
